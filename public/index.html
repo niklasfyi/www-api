@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>IndieWeb API</title>
+	<style>
+		html {
+			color-scheme: light dark;
+			font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 2rem;
+		}
+		h1 {
+			border-bottom: 2px solid currentColor;
+			padding-bottom: 0.5rem;
+		}
+		h2 {
+			margin-top: 2rem;
+			border-bottom: 1px solid currentColor;
+			padding-bottom: 0.25rem;
+		}
+		dl {
+			margin: 1rem 0;
+		}
+		dt {
+			font-weight: bold;
+			margin-top: 0.75rem;
+		}
+		dd {
+			margin-left: 2rem;
+			margin-bottom: 0.5rem;
+		}
+		code {
+			background: rgba(128, 128, 128, 0.1);
+			padding: 0.1rem 0.3rem;
+			border-radius: 3px;
+			font-family: 'Courier New', monospace;
+		}
+		footer {
+			margin-top: 3rem;
+			padding-top: 1rem;
+			border-top: 1px solid currentColor;
+			text-align: center;
+			color: gray;
+		}
+		.endpoint-group {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<h1>IndieWeb API</h1>
+		<p>Combined API hosting IndieAuth, Micropub, and Webmentions endpoints for the IndieWeb.</p>
+
+		<div class="endpoint-group">
+			<h2>🔐 IndieAuth Endpoints</h2>
+			<p>Authentication and authorization endpoints for IndieAuth.</p>
+			<dl>
+				<dt><b>GET</b> <code>/.well-known/oauth-authorization-server</code></dt>
+				<dd>Show <a href="https://indieauth.spec.indieweb.org/#indieauth-server-metadata">IndieAuth Server Metadata</a>.</dd>
+				
+				<dt><b>GET</b> <code>/auth</code></dt>
+				<dd>Show login form to <a href="https://indieauth.spec.indieweb.org/#authorization-request">Authenticate</a>.</dd>
+				
+				<dt><b>POST</b> <code>/auth</code></dt>
+				<dd>Exchange <code>code</code> for <a href="https://indieauth.spec.indieweb.org/#profile-information">Profile Information</a>.</dd>
+				
+				<dt><b>GET</b> <code>/token</code> <small>(legacy)</small></dt>
+				<dd>Check if <code>token</code> is <a href="https://indieauth.spec.indieweb.org/#access-token-verification-response">valid</a>.</dd>
+				
+				<dt><b>POST</b> <code>/token</code></dt>
+				<dd>Exchange <code>code</code> for <a href="https://indieauth.spec.indieweb.org/#access-token-response">Access Token</a>.</dd>
+				
+				<dt><b>POST</b> <code>/introspect</code></dt>
+				<dd>Check if <code>token</code> is <a href="https://indieauth.spec.indieweb.org/#access-token-verification-response">valid</a>.</dd>
+				
+				<dt><b>GET</b> <code>/userinfo</code></dt>
+				<dd>Get <a href="https://indieauth.spec.indieweb.org/#user-information">User Information</a>.</dd>
+			</dl>
+		</div>
+
+		<div class="endpoint-group">
+			<h2>📝 Micropub Endpoints</h2>
+			<p>Create, update, and delete content on your site.</p>
+			<dl>
+				<dt><b>POST</b> <code>/micropub</code></dt>
+				<dd><a href="https://www.w3.org/TR/micropub/">Micropub endpoint</a> handler for creating, updating, and deleting posts.</dd>
+				
+				<dt><b>GET</b> <code>/micropub?q={config,media-endpoint,syndicate-to,post-types}</code></dt>
+				<dd><a href="https://micropub.spec.indieweb.org/#querying">Query</a> your micropub configurations.</dd>
+				
+				<dt><b>GET</b> <code>/micropub?q=source&url</code></dt>
+				<dd>Get properties for post in <code>url</code>. See <a href="https://micropub.spec.indieweb.org/#source-content">Source Content</a>.</dd>
+				
+				<dt><b>POST</b> <code>/media</code></dt>
+				<dd><a href="https://www.w3.org/TR/micropub/#media-endpoint">Micropub media endpoint</a> handler for uploading files.</dd>
+				
+				<dt><b>GET</b> <code>/media?q=source</code></dt>
+				<dd>Get list of most recently uploaded files.</dd>
+			</dl>
+		</div>
+
+		<div class="endpoint-group">
+			<h2>💬 Webmention Endpoints</h2>
+			<p>Receive and manage webmentions for your site.</p>
+			<dl>
+				<dt><b>POST</b> <code>/webmention</code></dt>
+				<dd>Webmention receiver endpoint.</dd>
+				
+				<dt><b>DELETE</b> <code>/webmention?token&source&target</code></dt>
+				<dd>Force delete a processed webmention. <b>REQUIRED:</b> <code>token</code>.</dd>
+				
+				<dt><b>GET</b> <code>/process</code></dt>
+				<dd>Process queue of received webmentions.</dd>
+				
+				<dt><b>GET</b> <code>/webmentions?url</code></dt>
+				<dd>Return all webmentions for <code>url</code>.</dd>
+				
+				<dt><b>GET</b> <code>/webmentions?token</code></dt>
+				<dd>Return all webmentions received grouped by target. <b>REQUIRED:</b> <code>token</code></dd>
+				
+				<dt><b>GET</b> <code>/import?token&webmentionio</code></dt>
+				<dd>Import webmentions from <a href="https://webmention.io">webmention.io</a>. <b>REQUIRED:</b> <code>token</code> and <code>webmentionio</code> token</dd>
+			</dl>
+		</div>
+	</main>
+	
+	<footer>
+		<p>Built with ❤️ for the <a href="https://indieweb.org/">IndieWeb</a></p>
+		<p><small>Based on <a href="https://github.com/benjifs/serverless-indieauth">serverless-indieauth</a>, 
+		<a href="https://github.com/benjifs/serverless-micropub">serverless-micropub</a>, and 
+		<a href="https://github.com/benjifs/serverless-webmentions">serverless-webmentions</a></small></p>
+	</footer>
+</body>
+</html>

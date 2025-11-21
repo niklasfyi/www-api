@@ -1,0 +1,29 @@
+{
+  "name": "www-api",
+  "version": "1.0.0",
+  "description": "Combined IndieWeb API hosting IndieAuth, Micropub, and Webmentions endpoints",
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "keywords": [
+    "indieweb",
+    "indieauth",
+    "micropub",
+    "webmentions",
+    "netlify",
+    "serverless"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@benjifs/github-store": "^0.2.0",
+    "@benjifs/indieauth": "github:benjifs/indieauth",
+    "@benjifs/micropub": "^2.0.0",
+    "webmention-handler-netlify-blobs": "^0.3.0",
+    "webmention-receiver": "^0.6.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.38.1"
+  }
+}

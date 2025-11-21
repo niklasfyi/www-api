@@ -1,0 +1,68 @@
+[build]
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[functions."process"]
+  schedule = "@daily"
+
+# Redirects for cleaner URLs (optional)
+[[redirects]]
+  from = "/.well-known/oauth-authorization-server"
+  to = "/.netlify/functions/metadata"
+  status = 200
+
+[[redirects]]
+  from = "/auth"
+  to = "/.netlify/functions/auth"
+  status = 200
+
+[[redirects]]
+  from = "/token"
+  to = "/.netlify/functions/token"
+  status = 200
+
+[[redirects]]
+  from = "/introspect"
+  to = "/.netlify/functions/introspect"
+  status = 200
+
+[[redirects]]
+  from = "/userinfo"
+  to = "/.netlify/functions/userinfo"
+  status = 200
+
+[[redirects]]
+  from = "/micropub"
+  to = "/.netlify/functions/micropub"
+  status = 200
+
+[[redirects]]
+  from = "/media"
+  to = "/.netlify/functions/media"
+  status = 200
+
+[[redirects]]
+  from = "/webmention"
+  to = "/.netlify/functions/webmention"
+  status = 200
+
+[[redirects]]
+  from = "/webmentions"
+  to = "/.netlify/functions/webmentions"
+  status = 200
+
+[[redirects]]
+  from = "/process"
+  to = "/.netlify/functions/process"
+  status = 200
+
+[[redirects]]
+  from = "/import"
+  to = "/.netlify/functions/import"
+  status = 200
