@@ -24,7 +24,7 @@ export const micropub = new Micropub({
 	// mediaDir: 'uploads',
 	// https://micropub.spec.indieweb.org/#configuration
 	config: {
-		// 'media-endpoint': 'https://micropub.example.com/media',
+		'media-endpoint': 'https://api.niklas.fyi/media',
 		// 'syndicate-to': [
 		// 	{ uid: 'https://fed.brid.gy/', name: 'w/ Bridgy Fed', checked: true },
 		// ],
