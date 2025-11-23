@@ -20,8 +20,8 @@ export const micropub = new Micropub({
 	me: ME,
 	tokenEndpoint: TOKEN_ENDPOINT,
     translateProps: false,
-	// contentDir: 'src',
-	// mediaDir: 'uploads',
+	contentDir: 'src/content',
+	mediaDir: 'src/assets',
 	// https://micropub.spec.indieweb.org/#configuration
 	config: {
 		'media-endpoint': 'https://api.niklas.fyi/media',
