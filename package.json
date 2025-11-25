@@ -19,7 +19,7 @@
   "dependencies": {
     "@benjifs/github-store": "^0.2.0",
     "@benjifs/indieauth": "github:benjifs/indieauth",
-    "@benjifs/micropub": "github:niklasfyi/benjifs-micropub",
+    "@benjifs/micropub": "github:niklasfyi/benjifs-micropub#05e89cba7ce2a2ff544fac28ab785b2d615e3b26",
     "webmention-handler-netlify-blobs": "^0.3.0",
     "webmention-receiver": "^0.6.0"
   },
